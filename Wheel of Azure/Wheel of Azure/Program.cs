@@ -10,12 +10,13 @@ namespace Wheel_of_Azure
     {
         static void Main(string[] args)
         {
+            string solution = "Hello World";
             Console.WriteLine("Would you like to SPIN the wheel or SOLVE the phrase?");
             
             string firstChoice = "";
             while(firstChoice != "spin" && firstChoice != "solve") {
                 Console.Write("Type SPIN or SOLVE: ");
-                firstChoice = Console.ReadLine();
+                firstChoice = Console.ReadLine().ToLower();
             }
 
             
@@ -25,7 +26,12 @@ namespace Wheel_of_Azure
             }
             else if(firstChoice == "solve")
             {
-                Console.WriteLine("You picked solve");
+                Console.Write("Take your guess ");
+                string solveGuess = Console.ReadLine().ToLower();
+                if (solveGuess != solution.ToLower())
+                    Console.WriteLine("Please Try Again");
+                else
+                    Console.WriteLine("You Win!");
             }
             Console.ReadLine();
         }

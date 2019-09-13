@@ -10,9 +10,9 @@ namespace Wheel_of_Azure
 
         public Player(string n)
         {
-            this.Name = n;
-            this.Score = 0;
-            this.TotalScore = 0;
+            Name = n;
+            Score = 0;
+            TotalScore = 0;
         }
 
         public void AddCurrentScore(int i)

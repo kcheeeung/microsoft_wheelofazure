@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wheel of Azure", "Wheel of Azure\Wheel of Azure.csproj", "{C2FA5788-126C-47ED-8380-DB559BF90B2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{0157E793-7F88-4D6C-B437-B411E5FB2426}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2FA5788-126C-47ED-8380-DB559BF90B2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2FA5788-126C-47ED-8380-DB559BF90B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2FA5788-126C-47ED-8380-DB559BF90B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2FA5788-126C-47ED-8380-DB559BF90B2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0157E793-7F88-4D6C-B437-B411E5FB2426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0157E793-7F88-4D6C-B437-B411E5FB2426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0157E793-7F88-4D6C-B437-B411E5FB2426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0157E793-7F88-4D6C-B437-B411E5FB2426}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8FC0B7F6-F1DD-4181-AA6F-79D108CAEC7D}
+	EndGlobalSection
+EndGlobal

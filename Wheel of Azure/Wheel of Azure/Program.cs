@@ -10,7 +10,7 @@ namespace Wheel_of_Azure
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("hello");
+            Console.WriteLine("testing the link");
             Console.ReadKey();
         }
     }

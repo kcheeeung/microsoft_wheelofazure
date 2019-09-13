@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,9 +9,16 @@ namespace Wheel_of_Azure
 {
     public class Wheel
     {
-        public static int Addone(int i)
+        public Wheel()
         {
-            // TODO: Rename method and update with code
+            // Create data structure with set length of 24 and set numbers
+        }
+
+        public static int WheelSpin()
+        {
+            // Randomly generate number from wheel & return integer
+
+            return dollarAmount;
         }
     }
 }

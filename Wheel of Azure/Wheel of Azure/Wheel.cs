@@ -10,7 +10,7 @@ namespace Wheel_of_Azure
     {
         public static int Addone(int i)
         {
-            return i + 1;
+            // TODO: Rename method and update with code
         }
     }
 }

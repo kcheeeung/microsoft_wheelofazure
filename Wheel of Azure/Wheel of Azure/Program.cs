@@ -10,8 +10,24 @@ namespace Wheel_of_Azure
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("testing the link");
-            Console.ReadKey();
+            Console.WriteLine("Would you like to SPIN the wheel or SOLVE the phrase?");
+            
+            string firstChoice = "";
+            while(firstChoice != "spin" && firstChoice != "solve") {
+                Console.Write("Type SPIN or SOLVE: ");
+                firstChoice = Console.ReadLine();
+            }
+
+            
+            if (firstChoice == "spin")
+            {
+                Console.WriteLine("You picked spin");
+            }
+            else if(firstChoice == "solve")
+            {
+                Console.WriteLine("You picked solve");
+            }
+            Console.ReadLine();
         }
     }
 }

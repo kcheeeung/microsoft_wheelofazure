@@ -14,5 +14,17 @@ namespace Wheel_of_Azure
             this.Score = 0;
             this.TotalScore = 0;
         }
+
+        public void AddCurrentScore(int i)
+        {
+            Score += i;
+        }
+
+        public void ResetCurrentAndTotalScores()
+        {
+            int curr = Score;
+            Score = 0;
+            TotalScore += curr;
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace UnitTests_Player
         {
             Player p = new Player("Joe");
             Assert.AreEqual("Joe", p.Name);
-            Assert.AreEqual(0, p.Score);
+            Assert.AreEqual(0, p.TurnScore);
             Assert.AreEqual(0, p.TotalScore);
         }
 
@@ -21,7 +21,7 @@ namespace UnitTests_Player
         {
             Player p = new Player("Joe");
             p.AddCurrentScore(100);
-            Assert.AreEqual(100, p.Score);
+            Assert.AreEqual(100, p.TurnScore);
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace UnitTests_Player
             Player p = new Player("Joe");
             p.AddCurrentScore(100);
             p.ResetCurrentAndTotalScores();
-            Assert.AreEqual(0, p.Score);
+            Assert.AreEqual(0, p.TurnScore);
             Assert.AreEqual(100, p.TotalScore);
         }
     }

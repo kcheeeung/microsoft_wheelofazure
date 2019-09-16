@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Wheel_of_Azure
 {
@@ -16,50 +17,53 @@ namespace Wheel_of_Azure
                 int round_score = 0;
                 int spin_value = 10;
                 int count;
-                string phrase = "MICROSOFT LEAPO";
+
+
+                string phrase = "MICROSOFT LEAP";
                 Console.WriteLine("Please enter your name");
                 string name = Console.ReadLine();
-                Console.WriteLine("Welcome to Wheel of Azure {0}!", name.ToUpper());
-                Console.WriteLine("Current Score: {0} ", round_score);
+                Player One = new Player(name);
+
+                //Wheel wheel = new Wheel();
+                //Board board = new Board(phrase);
 
 
-                char[] guess = new char[phrase.Length];
-                Console.Write("Please enter your guess: ");
 
-                for (int p = 0; p < phrase.Length; p++)
-                {
-                    guess[p] = '*';
+                Console.WriteLine("Welcome to Wheel of Azure {0}!", One.Name.ToUpper());
 
-                }
+
 
 
                 while (true)
                 {
-                    Console.WriteLine(guess);
-                    count = 0;
-                    char playerGuess = char.Parse(Console.ReadLine().ToUpper());
-                    for (int i = 0; i < phrase.Length; i++)
+                    Console.WriteLine("Total Score: {0} ", One.TotalScore);
+                    //board.DisplayBoard();
+                    bool isNumeric = false;
+                    bool isValid = false;
+                    int userChoice;
+                    do
                     {
-                        if (playerGuess == phrase[i])
+                        Console.WriteLine("Enter 1 to Spin, or 2 to Solve");
+                        string choice = Console.ReadLine();
+                        isNumeric = int.TryParse(choice, out userChoice);
+                        if (userChoice == 1 || userChoice == 2)
                         {
-                            guess[i] = playerGuess;
-                            round_score = round_score + spin_value;
-                            count++;
+                            isValid = true;
                         }
+                    } while (!isNumeric || !isValid);
 
-                    }
-                    if(count > 0)
-                    {
-                        Console.WriteLine("Congratulations there are {0} matching letters", count);
-                        Console.WriteLine("Your score has been incremented by {0}", count * spin_value);
-                        Console.WriteLine("Letter Count : {0} ", count);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Sorry that letter is not in the word. Please guess again.");
-                    }
-                    Console.WriteLine("Total Score: {0} ", round_score);
+
+                    Console.WriteLine("valid");
+                    //if(userChoice == 1)
+                    //{
+                    //    Spin();
+                    //}
+                    //else
+                    //{
+                    //    Solve();
+                    //}
                 }
+                Console.WriteLine("You win!");
             }
 
         }

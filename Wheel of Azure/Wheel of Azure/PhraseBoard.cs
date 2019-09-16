@@ -28,10 +28,18 @@ namespace Wheel_of_Azure
 
             for (var i; i < inputPhrase.Length; i++)
             {
-                // Loop inputString
-                // Add characters to hash table, if the character is alphabetical character
-                // If non-alphabetical, add character to the Board list (as is), else add '*' to the Board list
+                // Add characters to hash table (dictionary), if the character is alphabetical character
+                if ()
+                    LetterCounts.Add(inputPhrase[i], 1);
+                else
+                    LetterCounts[i] = LetterCounts[i] + 1; // LetterCounts[i] += i;
 
+
+                // If non-alphabetical, add character to the Board list (as is), else add '*' to the Board list
+                if (inputPhrase[i].isLetter())
+                    Board.Add('*');
+                else
+                    Board.Add(inputPhrase[i]);
             }
         }
         public void DisplayBoard()

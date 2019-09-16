@@ -9,7 +9,7 @@ namespace Wheel_of_Azure
 
         public Wheel()
         {
-            WheelofAzure = new List<int> {
+            WheelOfAzure = new List<int> {
                 2500,
                 600,
                 700,

@@ -9,7 +9,7 @@ namespace Wheel_of_Azure
 {
     class PhraseBoard
     {
-        public bool IsGameOver; // TODO: This variable should be private and can have getter/setter methods for outside classes to retrieve the value
+        public bool IsGameOver { get; private set; } // TODO: This variable should be private and can have getter/setter methods for outside classes to retrieve the value
         private string CorrectAnswer;
         private List<char> Board;
         private HashSet<char> Guesses;
@@ -63,7 +63,7 @@ namespace Wheel_of_Azure
             Guesses.Add(guessedChar);
 
             // Updates board
-            UpdateBoard(guessedChar, CorrectAnswer);
+            UpdateBoard(guessedChar);
 
             // TODO: Create new function for IsGameOver to allow for field to become private
             // Check if game over, which updates IsGameOver field

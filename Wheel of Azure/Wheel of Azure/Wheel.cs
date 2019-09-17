@@ -58,8 +58,5 @@ namespace Wheel_of_Azure
              */
 
         } // end Wheel class
-
-
-        }
+        
     }
-}

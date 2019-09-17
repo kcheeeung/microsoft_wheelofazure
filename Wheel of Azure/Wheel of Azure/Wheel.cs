@@ -59,22 +59,6 @@ namespace Wheel_of_Azure
 
         } // end Wheel class
 
-    public class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("testing the link");
-            Console.ReadKey();
-            Console.WriteLine();
-
-            Wheel wheel = new Wheel();
-            int prize = wheel.WheelSpin();
-            Console.WriteLine(prize);
-
-            Console.ReadKey();
-
-
-
 
         }
     }

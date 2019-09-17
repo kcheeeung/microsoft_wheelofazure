@@ -26,20 +26,22 @@ namespace Wheel_of_Azure
             Board = new List<char>();
             LetterCounts = new Hashtable();
 
-            for (var i; i < inputPhrase.Length; i++)
+            foreach (var letter in inputPhrase)
             {
+                //char letter = inputPhrase[i];
+
                 // Add characters to hash table (dictionary), if the character is alphabetical character
-                if ()
-                    LetterCounts.Add(inputPhrase[i], 1);
+                if (!LetterCounts.ContainsKey(letter))
+                    LetterCounts.Add(letter, 1);
                 else
-                    LetterCounts[i] = LetterCounts[i] + 1; // LetterCounts[i] += i;
+                    LetterCounts[letter] = (int) LetterCounts[letter] + 1;
 
 
                 // If non-alphabetical, add character to the Board list (as is), else add '*' to the Board list
-                if (inputPhrase[i].isLetter())
+                if (Char.IsLetter(letter))
                     Board.Add('*');
                 else
-                    Board.Add(inputPhrase[i]);
+                    Board.Add(letter);
             }
         }
         public void DisplayBoard()
@@ -56,15 +58,25 @@ namespace Wheel_of_Azure
             /// <summary>
             /// Determines how much money is received from current spin. basedDollarValue is the value of the current spin. 
             /// </summary>
-            
+
             // Update guess hash set with guess
+            Guesses.Add(guessedChar);
 
-            // Determine if char is in hashtable. If located 
+            // Updates board
+            UpdateBoard();
 
-            //Updates board and check if game over, which updates IsGameOver field
+            // Check if game over, which updates IsGameOver field
+            if (LetterCounts.Count == 0)
+                IsGameOver = true;
+
+            // Determine if char is in hash table. If found, calcuate amount won. If not found, return zero.
+            if (LetterCounts.ContainsKey(guessedChar))
+                return (int)LetterCounts[guessedChar] * baseDollarValue;
+            else
+                return 0;
         }
 
-    
+
         public int MakeGuess(string guessedString)
         {
             /// <summary>
@@ -80,14 +92,22 @@ namespace Wheel_of_Azure
 
         public bool HasGuessed(char guessedChar)
         {
-        /// <summary>
-        /// Checks if the guessed character is found in the hashset. If located, returns true. If not found, returns false.
-        /// </summary>
+            /// <summary>
+            /// Checks if the guessed character is found in the hashset. If located, returns true. If not found, returns false.
+            /// </summary>
 
-        // if guessedChar in Guesses
-            // return true
-        // else
-            // return false
+            if Guesses.Contains(guessedChar)
+                return true;
+
+            else
+                return false;
+        }
+
+        private static void UpdateBoard()
+        {
+            /// <summary>
+            /// 
+            /// </summary>
         }
         
     }

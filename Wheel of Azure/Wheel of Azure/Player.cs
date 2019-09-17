@@ -4,9 +4,9 @@ namespace Wheel_of_Azure
 {
     public class Player
     {
-        public string Name { get; set; }
-        public int TurnScore { get; set; }
-        public int TotalScore { get; set; }
+        public string Name { get; private set; }
+        public int TurnScore { get; private set; }
+        public int TotalScore { get; private set; }
 
         /// <summary>
         /// Creates a player class that keeps track of name, current and total score

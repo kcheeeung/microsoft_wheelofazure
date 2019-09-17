@@ -1,37 +1,38 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wheel_of_Azure;
+using Xunit;
 
 namespace UnitTests_Player
 {
-    [TestClass]
-    public class TestPlayer
+    public class Test_Player
     {
-        [TestMethod]
-        public void TestPlayerConstructor()
+        [Fact]
+        public void Test_PlayerConstructor()
         {
             Player p = new Player("Joe");
-            Assert.AreEqual("Joe", p.Name);
-            Assert.AreEqual(0, p.TurnScore);
-            Assert.AreEqual(0, p.TotalScore);
+            Assert.Equal("Joe", p.Name);
+            Assert.Equal(0, p.TurnScore);
+            Assert.Equal(0, p.TotalScore);
         }
 
-        [TestMethod]
-        public void TestCalculateScore()
+        [Fact]
+        public void Test_AddCurrentScore()
         {
             Player p = new Player("Joe");
             p.AddCurrentScore(100);
-            Assert.AreEqual(100, p.TurnScore);
+            Assert.Equal(100, p.TurnScore);
+            p.AddCurrentScore(100);
+            Assert.Equal(200, p.TurnScore);
         }
 
-        [TestMethod]
-        public void ResetScoreAndTotal()
+        [Fact]
+        public void Test_ResetScoreAndTotal()
         {
             Player p = new Player("Joe");
             p.AddCurrentScore(100);
             p.ResetCurrentAndTotalScores();
-            Assert.AreEqual(0, p.TurnScore);
-            Assert.AreEqual(100, p.TotalScore);
+            Assert.Equal(0, p.TurnScore);
+            Assert.Equal(100, p.TotalScore);
         }
     }
 }

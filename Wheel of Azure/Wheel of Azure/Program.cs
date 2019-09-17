@@ -7,7 +7,7 @@ namespace Wheel_of_Azure
     {
         static string phrase = "MICROSOFT LEAP";
         //static Wheel wheel = new Wheel();
-        //static Board board = new Board(phrase);
+        //static PhraseBoard phraseBoard = new PhraseBoard(phrase);
         static Player playerOne;
 
         static void Main(string[] args)
@@ -23,7 +23,7 @@ namespace Wheel_of_Azure
             while (true)
             {
                 Console.WriteLine("Total Score: {0} ", playerOne.TotalScore);
-                //board.DisplayBoard();
+                //phraseBoard.DisplayBoard();
                 bool isNumeric = false;
                 bool isValid = false;
                 int userChoice;
@@ -64,7 +64,7 @@ namespace Wheel_of_Azure
             char spinGuessLetter = SingleLettersOnly(spinGuess);
 
             //If the character has already been guessed, then it will prompt the user to type in one that has not.
-            while (board.hasGuessed(spinGuessLetter))
+            while (phraseBoard.hasGuessed(spinGuessLetter))
             {
                 Console.Write("{0} has already been guessed. Guess again: ", spinGuessLetter);
                 spinGuess = Console.ReadLine().ToLower();
@@ -73,7 +73,7 @@ namespace Wheel_of_Azure
 
             //if the phrase contains the character, the program tells the user of this and tell them how much they won. 
             //It then goes back to the spin or solve function.
-            int pointsEarned = board.MakeGuess(wheelAmount, spinGuessLetter);
+            int pointsEarned = phraseBoard.MakeGuess(wheelAmount, spinGuessLetter);
 
             if (pointsEarned > 0)
             {
@@ -94,7 +94,7 @@ namespace Wheel_of_Azure
             //If not, then it goes back to the spin or solve function.
             Console.Write("Solve the phrase: ");
             string solveGuess = Console.ReadLine().ToLower();
-            if (board.MakeGuess(solveGuess) <= 0)
+            if (phraseBoard.MakeGuess(solveGuess) <= 0)
             {
                 Console.WriteLine("The phrase is not {0}. Please try again", solveGuess);
             }

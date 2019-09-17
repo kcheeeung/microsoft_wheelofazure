@@ -59,12 +59,13 @@ namespace Wheel_of_Azure
             /// Determines how much money is received from current spin. basedDollarValue is the value of the current spin. 
             /// </summary>
 
-            // Update guess hash set with guess
+            // Update guess hash set with guess 
             Guesses.Add(guessedChar);
 
             // Updates board
-            UpdateBoard();
+            UpdateBoard(guessedChar, CorrectAnswer);
 
+            // TODO: Create new function for IsGameOver to allow for field to become private
             // Check if game over, which updates IsGameOver field
             if (LetterCounts.Count == 0)
                 IsGameOver = true;
@@ -87,7 +88,6 @@ namespace Wheel_of_Azure
                 return 5000;
             else
                 return 0;
-
         }
 
         public bool HasGuessed(char guessedChar)
@@ -96,18 +96,27 @@ namespace Wheel_of_Azure
             /// Checks if the guessed character is found in the hashset. If located, returns true. If not found, returns false.
             /// </summary>
 
-            if Guesses.Contains(guessedChar)
+            if (Guesses.Contains(guessedChar))
                 return true;
-
             else
                 return false;
         }
 
-        private static void UpdateBoard()
+        private void UpdateBoard(char guessedChar)
         {
             /// <summary>
-            /// 
+            /// Static method that updates the board based on character guessed character. Returns void.
             /// </summary>
+             
+            // TODO: Determine more efficient way to update board.
+            // Loop phrase and determine where character should be placed on the board.
+            for (int i = 0; i < CorrectAnswer.Length; i++)
+            {
+                if (CorrectAnswer[i] == guessedChar)
+                    Board[i] = guessedChar;
+            }
+
+
         }
         
     }

@@ -1,17 +1,22 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
 using Wheel_of_Azure;
 
-namespace UnitTests
+
+namespace UnitTests_Player
 {
-    [TestClass]
-    public class TestWheel
+    public class XUnitWheelTest
     {
-        [TestMethod]
-        public void TestAddOne()
+        public void TestingMethod1()
         {
-            int res = Wheel.Addone(1);
-            Assert.AreEqual(2, res);
+            Wheel wheel = new Wheel();
+            List<int> dollarValues = new List<int>() { 1, 2, 3 };
+            int PrizeAmount = wheel.WheelSpin();
+            Assert.Contains(PrizeAmount, dollarValues);
         }
     }
 }

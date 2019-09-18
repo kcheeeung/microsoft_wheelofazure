@@ -18,7 +18,7 @@ namespace UnitTests
         private string inputString;
         public TestBoard()
         {
-            string inputString = "5";
+            string inputString = "hello y'all";
             board = new W.PhraseBoard(inputString);
 
             //this.outputWriter = outputWriter;
@@ -34,22 +34,13 @@ namespace UnitTests
         [Fact]
         public void TestDisplayBoard()
         {
-            /*using (StreamWriter consoleText = new StreamWriter())
+            using (StringWriter consoleText = new StringWriter())
             {
-                board.DisplayBoard();
                 Console.SetOut(consoleText);
-                Assert.Equal("***** *'**", consoleText.ToString());
-            }*/
-
-            const string NumberToPrint = "5";
-            var content = new StringBuilder();
-            TextWriter writer = new StringWriter(content);
-            var sut = new TestBoard();
-
-            sut.PrintString();
-
-            var actualOutput = content.ToString();
-            Assert.Equal("Number: 5", actualOutput);
+                board.DisplayBoard();
+                
+                Assert.Equal("***** *'***", consoleText.ToString());
+            }
         }
 
         [Fact]

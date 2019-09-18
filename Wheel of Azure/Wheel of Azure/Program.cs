@@ -6,8 +6,8 @@ namespace Wheel_of_Azure
     public class Program
     {
         static string phrase = "MICROSOFT LEAP";
-        //static Wheel wheel = new Wheel();
-        //static PhraseBoard phraseBoard = new PhraseBoard(phrase);
+        static Wheel wheel = new Wheel();
+        static PhraseBoard phraseBoard = new PhraseBoard(phrase);
         static Player playerOne;
 
         static void Main(string[] args)
@@ -54,7 +54,7 @@ namespace Wheel_of_Azure
 
         public static void Spin()
         {
-            int wheelAmount = wheel.SpinWheel();
+            int wheelAmount = wheel.WheelSpin();
             //placeholder for score generated from wheel.
             Console.WriteLine("The wheel landed at ${0}", wheelAmount);
 
@@ -64,7 +64,7 @@ namespace Wheel_of_Azure
             char spinGuessLetter = SingleLettersOnly(spinGuess);
 
             //If the character has already been guessed, then it will prompt the user to type in one that has not.
-            while (phraseBoard.hasGuessed(spinGuessLetter))
+            while (phraseBoard.HasGuessed(spinGuessLetter))
             {
                 Console.Write("{0} has already been guessed. Guess again: ", spinGuessLetter);
                 spinGuess = Console.ReadLine().ToLower();

@@ -57,9 +57,6 @@ namespace Wheel_of_Azure
              } // end NewWheel method
              */
 
-        } // end Wheel class
-
-
-        
-    
+        } // end Wheel class    
 }
+

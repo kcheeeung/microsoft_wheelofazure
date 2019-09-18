@@ -13,9 +13,6 @@ namespace Wheel_of_Azure
 
         static void Main(string[] args)
         {   
-            int round_score = 0;
-            int spin_value = 10;
-
             Console.WriteLine("Please enter your name");
             string name = Console.ReadLine();
             playerOne = new Player(name);
@@ -89,7 +86,17 @@ namespace Wheel_of_Azure
             }
         }
 
-
+        public static void Solve()
+        {
+            //Prompts the user to solve the phrase. If they get it right, they win. 
+            //If not, then it goes back to the spin or solve function.
+            Console.Write("Solve the phrase: ");
+            string solveGuess = Console.ReadLine().ToLower();
+            if (phraseBoard.MakeGuess(solveGuess) <= 0)
+            {
+                Console.WriteLine("The phrase is not {0}. Please try again", solveGuess);
+            }
+        }
         public static char SingleLettersOnly(string spinGuess)
         {
             //this function makes sure that a player only puts in a single character. If a player does not, it will continuously ask them until they do.

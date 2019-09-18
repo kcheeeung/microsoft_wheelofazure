@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using Wheel_of_Azure;
 using Xunit;
 
@@ -20,13 +21,18 @@ namespace UnitTests
             
             using (StringWriter consoleText = new StringWriter())
             {
-                Console.SetOut(consoleText);
-                Program.SingleLettersOnly("bb");
-                Program.SingleLettersOnly("b");
-
+                int elapsed = 0;
+                while (elapsed < 1000)
+                {
+                    Console.SetOut(consoleText);
+                    elapsed += 1000;
+                    Program.SingleLettersOnly("bb");
+                }
                 Assert.Equal("Type in a single character only, please: ", consoleText.ToString());
             }
-           
+
         }
+
+
     }
 }

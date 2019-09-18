@@ -18,11 +18,12 @@ namespace UnitTests
         public void TestMethod2()
         {
             
-            using (StreamWriter consoleText = new StreamWriter())
+            using (StringWriter consoleText = new StringWriter())
             {
-                Program.SingleLettersOnly("bb");
-
                 Console.SetOut(consoleText);
+                Program.SingleLettersOnly("bb");
+                Program.SingleLettersOnly("b");
+
                 Assert.Equal("Type in a single character only, please: ", consoleText.ToString());
             }
            

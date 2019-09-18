@@ -15,11 +15,12 @@ namespace Wheel_of_Azure
         public static char SingleLettersOnly(string spinGuess)
         {
             //this function makes sure that a player only puts in a single character. If a player does not, it will continuously ask them until they do.
-            while (spinGuess.Length != 1 && !Regex.IsMatch(spinGuess, @"^[a-z]+$"))
+            while (spinGuess.Length != 1 || !Regex.IsMatch(spinGuess, @"^[a-z]+$"))
             {
                 Console.Write("Type in a single character only, please: ");
                 spinGuess = Console.ReadLine().ToLower();
             }
+
             return spinGuess[0];
         }
     }

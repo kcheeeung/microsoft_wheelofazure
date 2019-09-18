@@ -50,9 +50,11 @@ namespace Wheel_of_Azure
             /// <summary>
             /// Displays the phrase board to the console. Returns void.
             /// </summary>
-            foreach (var letter in )
-            Console.WriteLine(Board.ToArray().ToString());
-            Console.WriteLine(Board.ToArray()[0]);
+            foreach (var letter in Board)
+            {
+                Console.Write(letter);
+            }
+
         }
 
         public int MakeGuess(int baseDollarValue, char guessedChar)
@@ -63,7 +65,6 @@ namespace Wheel_of_Azure
 
             // Update guess hash set with guess 
             Guesses.Add(guessedChar);
-            // TODO: Delete dictionary key when 
 
             // Updates board
             UpdateBoard(guessedChar);

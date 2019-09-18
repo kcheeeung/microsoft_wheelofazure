@@ -15,23 +15,23 @@ namespace UnitTests
             Assert.Equal('b', result);
         }
 
-        [Fact]
-        public void TestMethod2()
-        {
+        //[Fact]
+        //public void TestMethod2()
+        //{
             
-            using (StringWriter consoleText = new StringWriter())
-            {
-                int elapsed = 0;
-                while (elapsed < 1000)
-                {
-                    Console.SetOut(consoleText);
-                    elapsed += 1000;
-                    Program.SingleLettersOnly("bb");
-                }
-                Assert.Equal("Type in a single character only, please: ", consoleText.ToString());
-            }
+        //    using (StringWriter consoleText = new StringWriter())
+        //    {
+        //        int elapsed = 0;
+        //        while (elapsed < 1000)
+        //        {
+        //            Console.SetOut(consoleText);
+        //            elapsed += 1000;
+        //            Program.SingleLettersOnly("bb");
+        //        }
+        //        Assert.Equal("Type in a single character only, please: ", consoleText.ToString());
+        //    }
 
-        }
+        //}
 
 
     }

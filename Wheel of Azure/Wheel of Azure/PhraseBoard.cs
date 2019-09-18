@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Wheel_of_Azure
 {
-    class PhraseBoard
+    public class PhraseBoard
     {
         public bool IsGameOver { get; private set;  } // TODO: This variable should be private and can have getter/setter methods for outside classes to retrieve the value
         private string CorrectAnswer;
@@ -49,8 +49,7 @@ namespace Wheel_of_Azure
             /// <summary>
             /// Displays the phrase board to the console. Returns void.
             /// </summary>
-
-            Console.WriteLine(Board);
+                Console.Write(Board.ToList());
         }
 
         public int MakeGuess(int baseDollarValue, char guessedChar)

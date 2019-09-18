@@ -14,6 +14,7 @@ namespace Wheel_of_Azure
         private List<char> Board;
         private HashSet<char> Guesses;
         private Hashtable LetterCounts;
+        private int count = 0;
 
         public PhraseBoard(string inputPhrase)
         {
@@ -50,11 +51,12 @@ namespace Wheel_of_Azure
             /// <summary>
             /// Displays the phrase board to the console. Returns void.
             /// </summary>
+            count = 0;
             foreach (var letter in Board)
             {
                 Console.Write(letter);
+                if (letter == '*') count++;
             }
-
         }
 
         public int MakeGuess(int baseDollarValue, char guessedChar)
@@ -70,7 +72,7 @@ namespace Wheel_of_Azure
             UpdateBoard(guessedChar);
 
             // Check if game over, which updates IsGameOver field
-            if (LetterCounts.Count == 0)
+            if (count == 0)
                 IsGameOver = true;
 
             // Determine if char is in hash table. If found, calcuate amount won. If not found, return zero.
@@ -110,10 +112,6 @@ namespace Wheel_of_Azure
             /// <summary>
             /// Static method that updates the board based on character guessed character. Returns void.
             /// </summary>
-
-            // Remove key from hash map, if found.
-            if (LetterCounts.ContainsKey(guessedChar))
-                LetterCounts.Remove(guessedChar);
 
             // TODO: Determine more efficient way to update board.
             // Loop phrase and determine where character should be placed on the board.

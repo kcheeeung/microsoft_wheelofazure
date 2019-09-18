@@ -46,8 +46,8 @@ namespace UnitTests
         [Fact]
         public void TestMakeGuessCharWinPrizeandGameContd()
         {
-
-            var resultDollarAmount = board.MakeGuess(500, 'Y');
+            PhraseBoard newBoard = new PhraseBoard("hello world");
+            var resultDollarAmount = newBoard.MakeGuess(500, 'h');
             Assert.Equal(500, resultDollarAmount);
         }
 
@@ -84,13 +84,17 @@ namespace UnitTests
         [Fact]
         public void TestHasGuessedTrue()
         {
-
+            board.MakeGuess(500, 'h');
+            bool hasGuess = board.HasGuessed('h');
+            Assert.True(hasGuess);
         }
 
         [Fact]
         public void TestHasGuessedFalse()
         {
-
+            board.MakeGuess(500, 'h');
+            bool hasGuess = board.HasGuessed('j');
+            Assert.False(hasGuess);
         }
 
         [Fact]

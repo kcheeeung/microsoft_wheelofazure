@@ -11,12 +11,38 @@ namespace UnitTests_Player
 {
     public class XUnitWheelTest
     {
-        public void TestingMethod1()
+        [Fact]
+        public void TestWheelDollarValues()
         {
             Wheel wheel = new Wheel();
-            List<int> dollarValues = new List<int>() { 1, 2, 3 };
+            List<int> dollarValues = new List<int>() { 2500,
+                600,
+                700,
+                600,
+                650,
+                500,
+                700,
+                0,
+                0,
+                0,
+                0,
+                0,
+                600,
+                550,
+                500,
+                600,
+                650,
+                700,
+                800,
+                500,
+                800,
+                500,
+                650,
+                500 };
             int PrizeAmount = wheel.WheelSpin();
             Assert.Contains(PrizeAmount, dollarValues);
         }
+
+
     }
 }

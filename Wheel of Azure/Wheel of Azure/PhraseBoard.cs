@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Wheel_of_Azure
 {
-    class PhraseBoard
+    public class PhraseBoard
     {
         public bool IsGameOver { get; private set;  } // TODO: This variable should be private and can have getter/setter methods for outside classes to retrieve the value
         private string CorrectAnswer;
         private List<char> Board;
         private HashSet<char> Guesses;
         private Hashtable LetterCounts;
-        
+        private int count = 0;
 
         public PhraseBoard(string inputPhrase)
         {
@@ -25,6 +25,8 @@ namespace Wheel_of_Azure
 
             Board = new List<char>();
             LetterCounts = new Hashtable();
+            Guesses = new HashSet<char>();
+            CorrectAnswer = inputPhrase;
 
             foreach (var letter in inputPhrase)
             {
@@ -49,8 +51,12 @@ namespace Wheel_of_Azure
             /// <summary>
             /// Displays the phrase board to the console. Returns void.
             /// </summary>
-
-            Console.WriteLine(Board);
+            count = 0;
+            foreach (var letter in Board)
+            {
+                Console.Write(letter);
+                if (letter == '*') count++;
+            }
         }
 
         public int MakeGuess(int baseDollarValue, char guessedChar)
@@ -65,9 +71,8 @@ namespace Wheel_of_Azure
             // Updates board
             UpdateBoard(guessedChar);
 
-            // TODO: Create new function for IsGameOver to allow for field to become private
             // Check if game over, which updates IsGameOver field
-            if (LetterCounts.Count == 0)
+            if (count == 0)
                 IsGameOver = true;
 
             // Determine if char is in hash table. If found, calcuate amount won. If not found, return zero.
@@ -96,10 +101,10 @@ namespace Wheel_of_Azure
             /// Checks if the guessed character is found in the hashset. If located, returns true. If not found, returns false.
             /// </summary>
 
-            if (Guesses.Contains(guessedChar))
-                return true;
-            else
-                return false;
+                if (Guesses.Contains(guessedChar))
+                    return true;
+                else
+                    return false;
         }
 
         private void UpdateBoard(char guessedChar)
@@ -107,7 +112,7 @@ namespace Wheel_of_Azure
             /// <summary>
             /// Static method that updates the board based on character guessed character. Returns void.
             /// </summary>
-             
+
             // TODO: Determine more efficient way to update board.
             // Loop phrase and determine where character should be placed on the board.
             for (int i = 0; i < CorrectAnswer.Length; i++)

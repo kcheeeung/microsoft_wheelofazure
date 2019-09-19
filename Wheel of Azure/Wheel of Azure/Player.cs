@@ -11,7 +11,6 @@ namespace Wheel_of_Azure
         /// <summary>
         /// Creates a player class that keeps track of name, current and total score
         /// </summary>
-        /// <param name="n"></param>
         public Player(string n)
         {
             Name = n;

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Wheel_of_Azure
 {
@@ -16,13 +13,12 @@ namespace Wheel_of_Azure
         private Hashtable LetterCounts;
         private int count = 0;
 
+        /// <summary> 
+        /// This constructor method. Takes a string as an argument and stores the string into the 
+        /// phrase board. Also updates the hash table with the characters in the string. 
+        /// </summary>
         public PhraseBoard(string inputPhrase)
         {
-            /// <summary> 
-            /// This constructor method. Takes a string as an argument and stores the string into the 
-            /// phrase board. Also updates the hash table with the characters in the string. 
-            /// </summary>
-
             Board = new List<char>();
             LetterCounts = new Hashtable();
             Guesses = new HashSet<char>();
@@ -46,25 +42,29 @@ namespace Wheel_of_Azure
                     Board.Add(letter);
             }
         }
+
+        /// <summary>
+        /// Displays the phrase board to the console. Returns void.
+        /// </summary>
         public void DisplayBoard()
         {
-            /// <summary>
-            /// Displays the phrase board to the console. Returns void.
-            /// </summary>
             count = 0;
-            foreach (var letter in Board)
+            foreach (char letter in Board)
             {
                 Console.Write(letter);
-                if (letter == '*') count++;
+                if (letter == '*')
+                {
+                    count++;
+                }
             }
+            Console.WriteLine();
         }
 
+        /// <summary>
+        /// Determines how much money is received from current spin. basedDollarValue is the value of the current spin. 
+        /// </summary>
         public int MakeGuess(int baseDollarValue, char guessedChar)
         {
-            /// <summary>
-            /// Determines how much money is received from current spin. basedDollarValue is the value of the current spin. 
-            /// </summary>
-
             // Update guess hash set with guess 
             Guesses.Add(guessedChar);
 
@@ -77,42 +77,38 @@ namespace Wheel_of_Azure
 
             // Determine if char is in hash table. If found, calcuate amount won. If not found, return zero.
             if (LetterCounts.ContainsKey(guessedChar))
-                return (int)LetterCounts[guessedChar] * baseDollarValue;
+                return (int) LetterCounts[guessedChar] * baseDollarValue;
             else
                 return 0;
         }
 
-
+        /// <summary>
+        /// Determines how much is received from attempting to solve the phrase. 
+        /// </summary>
         public int MakeGuess(string guessedString)
         {
-            /// <summary>
-            /// Determines how much is received from attempting to solve the phrase. 
-            /// </summary>
-
             if (guessedString == CorrectAnswer)
                 return 5000;
             else
                 return 0;
         }
 
+        /// <summary>
+        /// Checks if the guessed character is found in the hashset. If located, returns true. If not found, returns false.
+        /// </summary>
         public bool HasGuessed(char guessedChar)
         {
-            /// <summary>
-            /// Checks if the guessed character is found in the hashset. If located, returns true. If not found, returns false.
-            /// </summary>
-
                 if (Guesses.Contains(guessedChar))
                     return true;
                 else
                     return false;
         }
 
+        /// <summary>
+        /// Static method that updates the board based on character guessed character. Returns void.
+        /// </summary>
         private void UpdateBoard(char guessedChar)
         {
-            /// <summary>
-            /// Static method that updates the board based on character guessed character. Returns void.
-            /// </summary>
-
             // TODO: Determine more efficient way to update board.
             // Loop phrase and determine where character should be placed on the board.
             for (int i = 0; i < CorrectAnswer.Length; i++)
@@ -120,8 +116,6 @@ namespace Wheel_of_Azure
                 if (CorrectAnswer[i] == guessedChar)
                     Board[i] = guessedChar;
             }
-
-
         }
         
     }

@@ -5,10 +5,12 @@ namespace Wheel_of_Azure
 {
     public class Wheel
     {
-        public List<int> WheelOfAzure;
+        private Random random;
+        private List<int> WheelOfAzure;
 
         public Wheel()
         {
+            random = new Random();
             WheelOfAzure = new List<int> {
                 2500,
                 600,
@@ -37,25 +39,23 @@ namespace Wheel_of_Azure
             };
         } // end Wheel constructor
 
-            public int WheelSpin()
+        /// <summary>
+        /// Randomly generate number from wheel
+        /// </summary>
+        /// <returns>The prize value of current spin</returns>
+        public int WheelSpin()
+        {
+            int wheelPrizeDollarIndex = random.Next(WheelOfAzure.Count);
+            int wheelPrizeDollarAmount = WheelOfAzure[wheelPrizeDollarIndex];
+            return wheelPrizeDollarAmount;
+        } // end WheelSpin method
+
+
+        /* public int[] NewWheel()
             {
-                // Randomly generate number from wheel
-                Random random = new Random();
-
-                int wheelPrizeDollarIndex = random.Next(WheelOfAzure.Count);
-                int wheelPrizeDollarAmount = WheelOfAzure[wheelPrizeDollarIndex];
-
-                return wheelPrizeDollarAmount;
-            } // end WheelSpin method
-
-
-            /* public int[] NewWheel()
-             {
-                 // TODO: Method when multiple rounds+		this	{Wheel_of_Azure.Wheel}	Wheel_of_Azure.Wheel
-
-
-             } // end NewWheel method
-             */
+                // TODO: Method when multiple rounds+		this	{Wheel_of_Azure.Wheel}	Wheel_of_Azure.Wheel
+            } // end NewWheel method
+            */
 
         } // end Wheel class
         

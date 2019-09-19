@@ -24,14 +24,17 @@ namespace Wheel_of_Azure
 
             foreach (char letter in inputPhrase)
             {
-                // Add characters to hash table (dictionary), if the character is alphabetical character
-                if (!LetterCounts.ContainsKey(letter))
+                if (char.IsLetter(letter))
                 {
-                    LetterCounts.Add(letter, 1);
-                }
-                else
-                {
-                    LetterCounts[letter] = (int)LetterCounts[letter] + 1;
+                    // Add characters to hash table (dictionary), if the character is alphabetical character
+                    if (!LetterCounts.ContainsKey(letter))
+                    {
+                        LetterCounts.Add(letter, 1);
+                    }
+                    else
+                    {
+                        LetterCounts[letter] = (int)LetterCounts[letter] + 1;
+                    }
                 }
 
                 // If non-alphabetical, add character to the Board list (as is), else add '*' to the Board list

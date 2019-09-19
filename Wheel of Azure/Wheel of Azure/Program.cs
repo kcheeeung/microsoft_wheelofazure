@@ -5,7 +5,7 @@ namespace Wheel_of_Azure
 {
     public class Program
     {
-        static string phrase = "MICROSOFT LEAP";
+        static string phrase = "microsoft leap";
         static Wheel wheel = new Wheel();
         static PhraseBoard phraseBoard = new PhraseBoard(phrase);
         static Player playerOne;
@@ -20,7 +20,7 @@ namespace Wheel_of_Azure
             playerOne = new Player(name);
 
             Console.WriteLine("Welcome to Wheel of Azure {0}!", playerOne.Name.ToLower());
-            while (true)
+            while (!phraseBoard.IsGameOver)
             {
                 Console.WriteLine("Total Score: {0} ", playerOne.TotalScore);
                 //phraseBoard.DisplayBoard();
@@ -38,9 +38,9 @@ namespace Wheel_of_Azure
                     }
                 } while (!isNumeric || !isValid);
 
-
+                phraseBoard.DisplayBoard();
                 Console.WriteLine("valid");
-                if(userChoice == 1)
+                if (userChoice == 1)
                 {
                     Spin();
                 }

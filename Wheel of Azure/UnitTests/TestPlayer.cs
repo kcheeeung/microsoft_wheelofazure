@@ -19,10 +19,23 @@ namespace UnitTests_Player
         public void Test_AddCurrentScore()
         {
             Player p = new Player("Joe");
-            p.AddCurrentScore(100);
-            Assert.Equal(100, p.TurnScore);
-            p.AddCurrentScore(100);
-            Assert.Equal(200, p.TurnScore);
+            Random random = new Random();
+            int total = 0;
+            for (int i = 0; i < 20; i++)
+            {
+                int score = random.Next();
+                if (score % 2 == 0)
+                {
+                    p.AddCurrentScore(-score);
+                    total += (-score);
+                }
+                else
+                {
+                    p.AddCurrentScore(score);
+                    total += score;
+                }
+            }
+            Assert.Equal(total, p.TurnScore);
         }
 
         [Fact]
@@ -33,6 +46,10 @@ namespace UnitTests_Player
             p.ResetCurrentAndTotalScores();
             Assert.Equal(0, p.TurnScore);
             Assert.Equal(100, p.TotalScore);
+            p.AddCurrentScore(100);
+            p.ResetCurrentAndTotalScores();
+            Assert.Equal(0, p.TurnScore);
+            Assert.Equal(200, p.TotalScore);
         }
     }
 }

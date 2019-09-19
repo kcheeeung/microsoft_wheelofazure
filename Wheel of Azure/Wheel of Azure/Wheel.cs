@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Wheel_of_Azure
 {
     public class Wheel
     {
         private Random random;
-        private List<int> WheelOfAzure;
-
-        public Wheel()
-        {
-            random = new Random();
-            WheelOfAzure = new List<int> {
+        public readonly int[] WheelOfAzure = {
                 2500,
                 600,
                 700,
@@ -36,16 +30,20 @@ namespace Wheel_of_Azure
                 500,
                 650,
                 500
-            };
-        } // end Wheel constructor
+        };
+
+        public Wheel()
+        {
+            random = new Random();
+        }
 
         /// <summary>
-        /// Randomly generate number from wheel
+        /// Randomly generates a number from the wheel
         /// </summary>
         /// <returns>The prize value of current spin</returns>
         public int WheelSpin()
         {
-            int wheelPrizeDollarIndex = random.Next(WheelOfAzure.Count);
+            int wheelPrizeDollarIndex = random.Next(WheelOfAzure.Length);
             int wheelPrizeDollarAmount = WheelOfAzure[wheelPrizeDollarIndex];
             return wheelPrizeDollarAmount;
         }

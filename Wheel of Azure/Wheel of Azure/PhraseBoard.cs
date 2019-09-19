@@ -6,12 +6,10 @@ namespace Wheel_of_Azure
 {
     public class PhraseBoard
     {
-        public bool IsGameOver { get; private set;  } // TODO: This variable should be private and can have getter/setter methods for outside classes to retrieve the value
         private string CorrectAnswer;
         private List<char> Board;
         private HashSet<char> Guesses;
         private Hashtable LetterCounts;
-        private int count = 0;
 
         /// <summary> 
         /// This constructor method. Takes a string as an argument and stores the string into the 
@@ -19,45 +17,57 @@ namespace Wheel_of_Azure
         /// </summary>
         public PhraseBoard(string inputPhrase)
         {
-            Board = new List<char>();
-            LetterCounts = new Hashtable();
-            Guesses = new HashSet<char>();
             CorrectAnswer = inputPhrase;
+            Board = new List<char>();
+            Guesses = new HashSet<char>();
+            LetterCounts = new Hashtable();
 
-            foreach (var letter in inputPhrase)
+            foreach (char letter in inputPhrase)
             {
-                //char letter = inputPhrase[i];
-
                 // Add characters to hash table (dictionary), if the character is alphabetical character
                 if (!LetterCounts.ContainsKey(letter))
+                {
                     LetterCounts.Add(letter, 1);
+                }
                 else
-                    LetterCounts[letter] = (int) LetterCounts[letter] + 1;
-
+                {
+                    LetterCounts[letter] = (int)LetterCounts[letter] + 1;
+                }
 
                 // If non-alphabetical, add character to the Board list (as is), else add '*' to the Board list
-                if (Char.IsLetter(letter))
+                if (char.IsLetter(letter))
+                {
                     Board.Add('*');
+                }
                 else
+                {
                     Board.Add(letter);
+                }
             }
         }
 
+        public bool IsGameOver()
+        {
+            return LetterCounts.Keys.Count == 0;
+        }
+
         /// <summary>
-        /// Displays the phrase board to the console. Returns void.
+        /// Displays the phrase to the console. Returns void.
         /// </summary>
         public void DisplayBoard()
         {
-            count = 0;
-            foreach (char letter in Board)
+            if (!IsGameOver())
             {
-                Console.Write(letter);
-                if (letter == '*')
+                foreach (char letter in Board)
                 {
-                    count++;
+                    Console.Write(letter);
                 }
+                Console.WriteLine();
             }
-            Console.WriteLine();
+            else
+            {
+                Console.WriteLine(CorrectAnswer);
+            }
         }
 
         /// <summary>
@@ -71,15 +81,17 @@ namespace Wheel_of_Azure
             // Updates board
             UpdateBoard(guessedChar);
 
-            // Check if game over, which updates IsGameOver field
-            if (count == 0)
-                IsGameOver = true;
-
             // Determine if char is in hash table. If found, calcuate amount won. If not found, return zero.
             if (LetterCounts.ContainsKey(guessedChar))
-                return (int) LetterCounts[guessedChar] * baseDollarValue;
+            {
+                int points = (int) LetterCounts[guessedChar] * baseDollarValue;
+                LetterCounts.Remove(guessedChar);
+                return points;
+            }
             else
+            {
                 return 0;
+            }
         }
 
         /// <summary>
@@ -88,9 +100,14 @@ namespace Wheel_of_Azure
         public int MakeGuess(string guessedString)
         {
             if (guessedString == CorrectAnswer)
+            {
+                LetterCounts.Clear();
                 return 5000;
+            }
             else
+            {
                 return 0;
+            }
         }
 
         /// <summary>
@@ -98,10 +115,7 @@ namespace Wheel_of_Azure
         /// </summary>
         public bool HasGuessed(char guessedChar)
         {
-                if (Guesses.Contains(guessedChar))
-                    return true;
-                else
-                    return false;
+            return Guesses.Contains(guessedChar);
         }
 
         /// <summary>
@@ -114,10 +128,11 @@ namespace Wheel_of_Azure
             for (int i = 0; i < CorrectAnswer.Length; i++)
             {
                 if (CorrectAnswer[i] == guessedChar)
+                {
                     Board[i] = guessedChar;
+                }
             }
         }
-        
     }
 }
 

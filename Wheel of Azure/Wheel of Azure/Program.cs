@@ -12,14 +12,14 @@ namespace Wheel_of_Azure
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Please enter your name");
+            Console.Write("Please enter your name: ");
             string name = Console.ReadLine();
             playerOne = new Player(name);
 
             Console.WriteLine("Welcome to Wheel of Azure {0}!", playerOne.Name);
-            while (!phraseBoard.IsGameOver)
+            while (!phraseBoard.IsGameOver())
             {
-                Console.WriteLine("Total Score: {0} ", playerOne.TurnScore);
+                Console.WriteLine("Total Score: ${0} ", playerOne.TurnScore);
                 phraseBoard.DisplayBoard();
                 bool isNumeric = false;
                 int userChoice;
@@ -40,12 +40,15 @@ namespace Wheel_of_Azure
                     Solve();
                 }
             }
-            Console.WriteLine("Total Score: {0} ", playerOne.TurnScore);
+            Console.WriteLine("Total Score: ${0} ", playerOne.TurnScore);
             phraseBoard.DisplayBoard();
             Console.WriteLine("You win! Press enter to exit.");
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Spins the wheel and asks the user to make a guess.
+        /// </summary>
         public static void Spin()
         {
             int wheelAmount = wheel.WheelSpin();
@@ -86,6 +89,9 @@ namespace Wheel_of_Azure
             }
         }
 
+        /// <summary>
+        /// Asks the user to solve the phrase.
+        /// </summary>
         public static void Solve()
         {
             //Prompts the user to solve the phrase. If they get it right, they win. 
@@ -103,9 +109,14 @@ namespace Wheel_of_Azure
             }
         }
 
+        /// <summary>
+        /// Checks if user's input is a single char.
+        /// Repeated asks until there is a valid input.
+        /// </summary>
+        /// <param name="spinGuess">The user's entered input</param>
+        /// <returns>The spin guess as a char</returns>
         public static char SingleLettersOnly(string spinGuess)
         {
-            //this function makes sure that a player only puts in a single character. If a player does not, it will continuously ask them until they do.
             while (spinGuess.Length != 1 || !Regex.IsMatch(spinGuess, @"^[a-z]+$"))
             {
                 Console.Write("Type in a single character only, please: ");

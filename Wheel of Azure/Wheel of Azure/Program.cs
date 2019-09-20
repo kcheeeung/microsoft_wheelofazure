@@ -7,7 +7,7 @@ namespace Wheel_of_Azure
     {
         static string phrase = "abc";
         static Wheel wheel = new Wheel();
-        static PhraseBoard phraseBoard = new PhraseBoard(phrase);
+        static PhraseBoard phraseBoard = new PhraseBoard(phrase.ToLower());
         static Player playerOne;
 
         static void Main(string[] args)
